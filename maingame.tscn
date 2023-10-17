@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://4aal6upwp0eb"]
+
+[ext_resource type="Script" path="res://maingame.gd" id="1_cg56v"]
+[ext_resource type="PackedScene" uid="uid://lixt22ias30n" path="res://player.tscn" id="2_7ofk7"]
+[ext_resource type="FontFile" uid="uid://b2p4hy5k0dbcr" path="res://ARCADECLASSIC.TTF" id="3_e68of"]
+
+[sub_resource type="Curve2D" id="Curve2D_ecxfu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 3, 0, 0, 0, 0, 1, -2, 0, 0, 0, 0, 1, 645, 0, 0, 0, 0, 1152, 649, 0, 0, 0, 0, 1153, -2, 0, 0, 0, 0, 1, 4)
+}
+point_count = 6
+
+[node name="maingame" type="Node2D"]
+script = ExtResource("1_cg56v")
+
+[node name="player" parent="." instance=ExtResource("2_7ofk7")]
+position = Vector2(496, 267)
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ecxfu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-1, 3)
+rotation = -1.19029
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1012.0
+offset_top = 6.0
+offset_right = 1152.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_e68of")
+theme_override_font_sizes/font_size = 50
+text = "count"
+
+[node name="StarSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="StarSpawnTimer" to="." method="_on_star_spawn_timer_timeout"]

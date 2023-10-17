@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://doxpck2pik0fq"]
+
+[ext_resource type="Script" path="res://Star.gd" id="1_lm0mm"]
+[ext_resource type="Texture2D" uid="uid://cwnobnyd5m84u" path="res://star.png" id="2_5xwg5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0ij6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5xwg5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_128xa"]
+radius = 27.0
+
+[node name="star" type="Area2D"]
+script = ExtResource("1_lm0mm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(458, 316)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_i0ij6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(459, 318)
+shape = SubResource("CircleShape2D_128xa")

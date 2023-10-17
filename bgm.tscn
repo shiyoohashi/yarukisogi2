@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcfn4mq66jslu"]
+
+[ext_resource type="Script" path="res://Node.gd" id="1_t16q0"]
+[ext_resource type="AudioStream" uid="uid://bh7u6tixyor0u" path="res://Love_it_Rabbit.ogg" id="2_oeius"]
+
+[node name="Bgm" type="Node"]
+script = ExtResource("1_t16q0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_oeius")
+volume_db = -10.0
+autoplay = true
+bus = &"Bgm"

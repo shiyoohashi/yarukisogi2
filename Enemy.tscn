@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca7ra0ilvpyg0"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_6b5dm"]
+[ext_resource type="Texture2D" uid="uid://b3xxa8aaymfta" path="res://yarukisogi3.png" id="2_wmo35"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r11ji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wmo35")
+}],
+"loop": true,
+"name": &"Enemy",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ggm0"]
+size = Vector2(100, 100)
+
+[node name="Enemy" type="Area2D"]
+script = ExtResource("1_6b5dm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_r11ji")
+animation = &"Enemy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1ggm0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

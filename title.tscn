@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmb02ytoo1q3o"]
+
+[ext_resource type="FontFile" uid="uid://b2p4hy5k0dbcr" path="res://ARCADECLASSIC.TTF" id="1_ci3ce"]
+[ext_resource type="Script" path="res://title.gd" id="1_oitio"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oitio")
+
+[node name="Label" type="Label" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -354.0
+offset_top = -197.5
+offset_right = 354.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ci3ce")
+theme_override_font_sizes/font_size = 110
+text = "YarukiSogi2"
+
+[node name="Button" type="Button" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 122.0
+offset_top = 165.0
+offset_right = 451.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_ci3ce")
+theme_override_font_sizes/font_size = 70
+text = " HARD MODE "
+
+[node name="EasyButton" type="Button" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = 165.0
+offset_right = -90.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_ci3ce")
+theme_override_font_sizes/font_size = 70
+text = " Easy Mode "
+
+[node name="Label2" type="Label" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = 16.0
+offset_right = 300.5
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ci3ce")
+theme_override_font_sizes/font_size = 60
+text = "Please  select a  mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
